@@ -21,10 +21,16 @@ new Vue({
 
         },
         specialAttack: function () {
+            var damage = this.calculateDamage(10, 20)
+            this.monsterHealth -= damage
+            if (this.checkwin()) {
+                return
+            }
+            this.monsterAttacks()
 
         },
         heal: function () {
-
+            (this.playerHealth <= 90) ? (this.playerHealth += 10) : (this.playerHealth = 100);
         },
         giveUp: function () {
             this.gameIsRunning = false
