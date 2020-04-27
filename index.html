@@ -13,17 +13,21 @@
         <section class="row">
             <div class="small-6 columns">
                 <h1 class="text-center">TU</h1>
-                <div class="curarthbar">
-                    <div class="curarthbar text-center" style="background-color: goldenrod; margin: 0; color: white;">
+                <div class="healthbar">
+                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                        :style="{width: playerHealth + '%'}">
+                        {{playerHealth}}
                     </div>
                 </div>
             </div>
             <div class="small-6 columns">
                 <h1 class="text-center">MONSTRUO</h1>
-                <div class="curarthbar">
-                    <div class="curarthbar text-center"
-                        style="background-color: rgb(0, 81, 128); margin: 0; color: white;">
-             </div>
+                <div class="healthbar">
+                    <div class="healthbar text-center"
+                        style="background-color: rgb(0, 81, 128); margin: 0; color: white;"
+                        :style="{width: monsterHealth + '%'}">
+                        {{monsterHealth}}
+                    </div>
                 </div>
             </div>
         </section>
@@ -35,10 +39,10 @@
         </section>
         <section class="row controls" v-else>
             <div class="small-12 columns">
-                <button id="atacar" >ATACAR</button>
-                <button id="ataque-especial" >ATAQUE ESPECIAL</button>
-                <button id="curar" >CURAR</button>
-                <button id="rendirse" >RENDIRSE</button>
+                <button id="atacar">ATACAR</button>
+                <button id="ataque-especial">ATAQUE ESPECIAL</button>
+                <button id="curar">CURAR</button>
+                <button id="rendirse">RENDIRSE</button>
             </div>
         </section>
         <section class="row log">
@@ -46,7 +50,7 @@
 
                 <ul>
                     <li>
-                        
+
                     </li>
                 </ul>
 
