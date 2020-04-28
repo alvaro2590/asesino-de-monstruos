@@ -10,6 +10,10 @@
     transition: width 500ms;
 }
 
+.healthbar{
+    background-color: lightgrey;
+}
+
 .controls, .log {
     margin-top: 30px;
     text-align: center;
@@ -53,42 +57,48 @@ button {
     margin: 10px;
 }
 
-#empezar-partida {
+#startGame {
     background-color: #aaffb0;
 }
 
-#empezar-partida:hover {
+#startGame:hover {
     background-color: #76ff7e;
 }
 
-#atacar {
+#attack {
     background-color: #ff7367;
 }
 
-#atacar:hover {
+#attack:hover {
     background-color: #ff3f43;
 }
 
-#ataque-especial {
+#special-attack {
     background-color: #ffaf4f;
 }
 
-#ataque-especial:hover {
+#special-attack:hover {
     background-color: #ff9a2b;
 }
 
-#curar {
+#heal {
     background-color: #aaffb0;
 }
 
-#curar:hover {
+#heal:hover {
     background-color: #76ff7e;
 }
 
-#rendirse {
+#giveUp {
     background-color: #ffffff;
 }
 
-#rendirse:hover {
+#giveUp:hover {
     background-color: #c7c7c7;
+}
+
+.logo {
+    height: 250px;
+    width: 250px;
+    border: 1px dotted black;
 }
