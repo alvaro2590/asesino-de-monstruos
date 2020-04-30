@@ -1,5 +1,6 @@
 .text-center {
     text-align: center;
+    color: whitesmoke;
 }
 
 .curarthbar {
@@ -42,11 +43,15 @@
 .log ul .player-turno {
     color: rgba(8, 92, 160, 0.945);
     background-color: #8b97da;
+    text-align: left;
+    padding-left: 1%;
 }
 
 .log ul .monster-turno {
     color: rgb(233, 20, 169);
     background-color: #e697e9;
+    text-align: right;
+    padding-right: 1%;
 }
 
 button {
@@ -66,11 +71,11 @@ button {
 }
 
 #attack {
-    background-color: #ff7367;
+    background-color: #ff3e2c;
 }
 
 #attack:hover {
-    background-color: #ff3f43;
+    background-color: #ff1500;
 }
 
 #special-attack {
@@ -78,15 +83,15 @@ button {
 }
 
 #special-attack:hover {
-    background-color: #ff9a2b;
+    background-color: #ff8c00;
 }
 
 #heal {
-    background-color: #aaffb0;
+    background-color: #40ff50;
 }
 
 #heal:hover {
-    background-color: #76ff7e;
+    background-color: #00ff11;
 }
 
 #giveUp {

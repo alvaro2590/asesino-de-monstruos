@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>
+<body style="background-color: black;">
     <div id="app">
         <section class="row">
             <div class="small-6 columns">
@@ -41,7 +41,7 @@
             <div class="small-12 columns">
                 <button id="attack" @click="attack(3,10)">ATACAR</button>
                 <button id="special-attack" @click="specialAttack(10,20)">ATAQUE ESPECIAL</button>
-                <button id="heal" @click="heal">CURAR</button>
+                <button id="heal" :disabled="playerHealth==100" @click="heal">CURAR</button>
                 <button id="giveUp"@click="giveUp">RENDIRSE</button>
             </div>
         </section>

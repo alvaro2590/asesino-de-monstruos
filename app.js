@@ -5,9 +5,9 @@ new Vue({
         monsterHealth: 100,
         gameIsRunning: false,
         turn: {
-             isPlayer: true,
-              text: ''
-            },
+            isPlayer: true,
+            text: ''
+        },
         turns: []
     },
     methods: {
@@ -17,34 +17,37 @@ new Vue({
             this.monsterHealth = 100;
             this.turns = [];
         },
-        attack: function (min, max) {
+        attack: function (min, max, char) {
             var damage = this.calculateDamage(min, max)
             this.monsterHealth -= damage
-            this.turns.unshift({
-                isPlayer: true,
-                text: 'El jugador golpea al monstruo por: ' + damage
-            });
-            console.log(this.turns);
-
+            if (char == 'S') {
+                this.turns.unshift({
+                    isPlayer: true,
+                    text: 'El jugador golpea fuerte al monstruo por: ' + damage
+                });
+            }else{
+                this.turns.unshift({
+                    isPlayer: true,
+                    text: 'El jugador golpea al monstruo por: ' + damage
+                });
+            }
+                
             if (this.checkwin()) {
                 return
             }
             this.monsterAttacks()
-
         },
         specialAttack: function (min, max) {
-            this.attack(min,max);
-
+            this.attack(min, max, 'S');
         },
         heal: function () {
             (this.playerHealth <= 90) ? (this.playerHealth += 10) : (this.playerHealth = 100);
-
             this.monsterAttacks();
         },
         giveUp: function () {
+            this.startGame()
             this.gameIsRunning = false
         },
-
         monsterAttacks: function () {
             var damage = this.calculateDamage(5, 12)
             this.playerHealth -= damage
@@ -53,30 +56,25 @@ new Vue({
                 text: 'El monstruo golpea al jugador por: ' + damage
             });
             this.checkwin()
-
         },
         calculateDamage: function (min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min)
-
         },
         checkwin: function () {
             if (this.monsterHealth <= 0) {
-                if (confirm('¡Ganaste! ¿Jugar de nuevo?')) {
-                    this.startGame()
-                } else {
-                    this.gameIsRunning = false
-                }
-                return true
+                this.check('¡Ganaste!')
             } else if (this.playerHealth <= 0) {
-                if (confirm('¡Perdiste! ¿Jugar de nuevo?')) {
-                    this.startGame()
-                } else {
-                    this.gameIsRunning = false
-                }
-                return true
+                this.check('¡Perdiste!')
             }
             return false
+        },
+        check: function (text) {
+            if (confirm(text + ' ¿Jugar de nuevo?')) {
+                this.startGame()
+            } else {
+                this.giveUp()
+            }
+            return true
         }
-
     }
 })
