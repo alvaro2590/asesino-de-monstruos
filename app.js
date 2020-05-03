@@ -11,13 +11,13 @@ new Vue({
         turns: []
     },
     methods: {
-        startGame: function () {
+        startGame: function() {
             this.gameIsRunning = true;
             this.playerHealth = 100;
             this.monsterHealth = 100;
             this.turns = [];
         },
-        attack: function (min, max, char) {
+        attack: function(min, max, char) {
             var damage = this.calculateDamage(min, max)
             this.monsterHealth -= damage
             if (char == 'S') {
@@ -25,30 +25,31 @@ new Vue({
                     isPlayer: true,
                     text: 'El jugador golpea fuerte al monstruo por: ' + damage
                 });
-            }else{
+            } else {
                 this.turns.unshift({
                     isPlayer: true,
                     text: 'El jugador golpea al monstruo por: ' + damage
                 });
             }
-                
             if (this.checkwin()) {
                 return
             }
-            this.monsterAttacks()
+            if (this.monsterHealth != 100) {
+                this.monsterAttacks()
+            }
         },
-        specialAttack: function (min, max) {
+        specialAttack: function(min, max) {
             this.attack(min, max, 'S');
         },
-        heal: function () {
+        heal: function() {
             (this.playerHealth <= 90) ? (this.playerHealth += 10) : (this.playerHealth = 100);
             this.monsterAttacks();
         },
-        giveUp: function () {
+        giveUp: function() {
             this.startGame()
             this.gameIsRunning = false
         },
-        monsterAttacks: function () {
+        monsterAttacks: function() {
             var damage = this.calculateDamage(5, 12)
             this.playerHealth -= damage
             this.turns.unshift({
@@ -57,10 +58,10 @@ new Vue({
             });
             this.checkwin()
         },
-        calculateDamage: function (min, max) {
+        calculateDamage: function(min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min)
         },
-        checkwin: function () {
+        checkwin: function() {
             if (this.monsterHealth <= 0) {
                 this.check('¡Ganaste!')
             } else if (this.playerHealth <= 0) {
@@ -68,7 +69,7 @@ new Vue({
             }
             return false
         },
-        check: function (text) {
+        check: function(text) {
             if (confirm(text + ' ¿Jugar de nuevo?')) {
                 this.startGame()
             } else {

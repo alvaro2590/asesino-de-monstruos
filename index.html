@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body style="background-color: black;">
+<body id="body">
     <div id="app">
         <section class="row">
             <div class="small-6 columns">
                 <h1 class="text-center"><img src="img/warrior.png" class="logo"><br> Tú</h1>
                 <div class="healthbar">
-                    <div class="healthbar curarthbar text-center" style="background-color: green; margin: 0; color: white;"
-                        :style="{width: playerHealth + '%'}">
+                    <div class="healthbar curarthbar text-center"
+                        style="background-color: green; margin: 0; color: white;" :style="{width: playerHealth + '%'}">
                         {{playerHealth}}
                     </div>
                 </div>
@@ -42,18 +42,17 @@
                 <button id="attack" @click="attack(3,10)">ATACAR</button>
                 <button id="special-attack" @click="specialAttack(10,20)">ATAQUE ESPECIAL</button>
                 <button id="heal" :disabled="playerHealth==100" @click="heal">CURAR</button>
-                <button id="giveUp"@click="giveUp">RENDIRSE</button>
+                <button id="giveUp" @click="giveUp">RENDIRSE</button>
             </div>
         </section>
-        <section class="row log">
-            <div class="small-12 columns" v-if="turns.length > 0"> 
-
+        <section class="row log" v-if="turns.length > 0">
+            <div class="small-12 columns">
                 <ul>
-                    <li class="turno" v-for="turn in turns" :class="{'player-turno': turn.isPlayer, 'monster-turno': !turn.isPlayer}"> 
+                    <li class="turno" v-for="turn in turns"
+                        :class="{'player-turno': turn.isPlayer, 'monster-turno': !turn.isPlayer}">
                         {{turn.text}}
                     </li>
                 </ul>
-
             </div>
         </section>
     </div>
